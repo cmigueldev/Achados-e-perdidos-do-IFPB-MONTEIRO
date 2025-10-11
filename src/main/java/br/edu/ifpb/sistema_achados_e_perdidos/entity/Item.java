@@ -16,6 +16,10 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "O código do item é obrigatório")
+    @Column(unique = true, nullable = false)
+    private String codigo;
+
     @NotBlank(message = "O nome do item é obrigatório")
     @Column(nullable = false)
     private String nome;
@@ -82,4 +86,12 @@ public class Item {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    public String getCodigo() {
+        return codigo;
+    }
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    
 }
