@@ -3,10 +3,12 @@ package br.edu.ifpb.sistema_achados_e_perdidos.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.edu.ifpb.sistema_achados_e_perdidos.entity.Item;
 import br.edu.ifpb.sistema_achados_e_perdidos.repository.ItemRepository;
 
+@Service
 public class ItemService {
 
 	@Autowired

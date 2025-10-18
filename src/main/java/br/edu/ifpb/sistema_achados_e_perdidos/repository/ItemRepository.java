@@ -8,4 +8,7 @@ import br.edu.ifpb.sistema_achados_e_perdidos.entity.Item;
 public interface ItemRepository extends JpaRepository<Item, Long>{
 
     boolean existsByCodigo(String codigo);
+
+    // verificar se existe item para um usuario
+	boolean existsByUsuarioId(Long usuarioId);
 }

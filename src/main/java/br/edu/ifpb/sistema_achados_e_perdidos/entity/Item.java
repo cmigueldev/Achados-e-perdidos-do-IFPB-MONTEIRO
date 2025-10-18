@@ -1,10 +1,17 @@
 package br.edu.ifpb.sistema_achados_e_perdidos.entity;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -16,7 +23,6 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "O código do item é obrigatório")
     @Column(unique = true, nullable = false)
     private String codigo;
 
@@ -32,6 +38,10 @@ public class Item {
     @Column(nullable = false)
     private String local;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "Criacao", nullable = false)
+    private Date dataEncontrado;
+
     @NotBlank(message = "A foto do item é obrigatória")
     @Column(nullable = false)
     private String fotoDoItem;
@@ -44,6 +54,12 @@ public class Item {
     @Column(nullable = false)
     private String descricao;
 
+    @ManyToOne(
+			cascade = CascadeType.ALL,
+			fetch = FetchType.EAGER,
+			optional = false)
+	private Usuario usuario;
+  
     public Long getId() {
         return id;
     }
@@ -92,6 +108,18 @@ public class Item {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-
+ 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    public Date getDataEncontrado() {
+        return dataEncontrado;
+    }
+    public void setDataEncontrado(Date dataEncontrado) {
+        this.dataEncontrado = dataEncontrado;
+    }
     
 }
