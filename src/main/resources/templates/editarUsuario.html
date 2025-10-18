@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuário</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+</head>
+<body>
+    <div th:insert="fragments/barraNavegacao :: navbar"></div>
+    <br>
+    <div class="form-header">
+        <h1>Editar Usuário</h1>
+    </div>
+    <br>
+    <form th:action="@{/usuario/edit}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div th:insert="fragments/formUsuario :: formUsuario"></div>
+        <div class="button-container">
+            <button type="submit">Salvar</button>
+            <button type="button" onclick="window.location.href='/usuario/list'">Cancelar</button>
+        </div>
+
+        <h2>itens associados</h2>
+        <div class="grid-container">
+            <div th:each="item : *{itens}" class="card">
+                    <img class="card-image" th:src="@{${item.fotoDoItem}}" alt="Foto do Item" />
+                    <div class="category" th:text="${item.categoria}">Categoria</div>
+                    <div class="heading" th:text="${item.nome}">Nome do Item</div>
+                    <div class="author">
+                        <span th:text="'Local: ' + ${item.local}"></span><br>
+                        <span th:text="'Status: ' + ${item.status}"></span><br>
+                        <span th:text="${item.descricao}"></span>
+                    </div>
+                    <a th:href="@{'/item/edit/' + ${item.id}}">Editar</a>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
