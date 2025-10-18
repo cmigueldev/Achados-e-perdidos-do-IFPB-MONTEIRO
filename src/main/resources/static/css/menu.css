@@ -1,0 +1,180 @@
+/* static/css/menu.css */
+
+/* Reset básico e estilos do Body (do Tailwind 'bg-gray-50') */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f9fafb; /* bg-gray-50 */
+  color: #1f2937; /* text-gray-800 */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Navbar (Header) --- */
+/* Estilos do header (bg-green-700, text-white, shadow-md, sticky, etc.) */
+.navbar-header {
+  background-color: #047857; /* green-700 */
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Container dentro da Navbar (mx-auto, flex, justify-between, etc.) */
+.navbar-container {
+  max-width: 1280px; /* container */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem; /* py-4 px-6 */
+}
+
+/* Título da Navbar (text-xl, font-bold) */
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+}
+
+/* Menu de navegação (space-x-4) */
+.navbar-menu {
+  display: flex;
+  gap: 1rem; /* space-x-4 */
+}
+
+/* Links da Navbar (hover:text-gray-200) */
+.navbar-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navbar-menu a:hover {
+  color: #e5e7eb; /* gray-200 */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Conteúdo Principal --- */
+/* Container principal (mx-auto, px-6, py-10) */
+main.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.5rem 1.5rem; /* py-10 px-6 */
+  flex-grow: 1;
+}
+
+/* Título principal (text-3xl, font-semibold, text-center, etc.) */
+.main-title {
+  font-size: 1.875rem; /* 3xl */
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2.5rem; /* mb-10 */
+  color: #065f46; /* green-800 */
+}
+
+/* --- Grid de Cards --- */
+/* Container do Grid (grid, grid-cols-*, gap-6) */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr; /* Padrão (1 coluna celular) */
+  gap: 1.5rem; /* gap-6 */
+}
+
+/* Grid responsivo (sm:grid-cols-2, lg:grid-cols-3) */
+@media (min-width: 640px) { /* sm */
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) { /* lg */
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Card --- */
+/* Estilo do Card (bg-white, rounded-2xl, shadow-lg, p-4, flex) */
+.card {
+  background-color: white;
+  border-radius: 1rem; /* rounded-2xl */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  padding: 1.25rem; /* p-4 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagem do Card (rounded-lg, mb-4, w-full, h-48, object-cover) */
+.card-image {
+  border-radius: 0.5rem; /* rounded-lg */
+  margin-bottom: 1rem; /* mb-4 */
+  width: 100%;
+  height: 12rem; /* h-48 */
+  object-fit: cover;
+}
+
+/* Categoria (adicionado para estilo) */
+.card .category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #047857; /* green-700 */
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+/* Nome do item (adicionado para estilo) */
+.card .heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+/* Detalhes (local, status, desc) */
+.card .author {
+  font-size: 0.875rem;
+  color: #4b5563; /* gray-600 */
+  margin-bottom: 1rem;
+}
+
+.card .author span {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Botão/Link "Editar" (bg-green-700, text-white, px-4, py-2, etc.) */
+.card-button {
+  background-color: #047857; /* green-700 */
+  color: white;
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: auto; /* Empurra o botão para o final do card */
+  align-self: flex-start; /* Alinha o botão à esquerda */
+}
+
+.card-button:hover {
+  background-color: #065f46; /* green-800 */
+}
+
+/* --- Rodapé --- */
+/* (bg-green-700, text-white, text-center, py-4, mt-10) */
+footer.main-footer {
+  background-color: #047857; /* green-700 */
+  color: white;
+  text-align: center;
+  padding: 1rem 0; /* py-4 */
+  margin-top: 2.5rem; /* mt-10 */
+}

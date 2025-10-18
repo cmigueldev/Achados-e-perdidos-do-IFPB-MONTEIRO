@@ -2,29 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
    <title>Fragments</title>
-   <link rel="stylesheet" th:href="@{/css/menu.css}">
-   
-</head>
+   </head>
 <body>
-   <div th:fragment="navbar" class="menu">
-		<div class="sidenav">
-				<a href="/">tela inicial</a>
-				
-				<button class="dropdown-btn">
-                    Usuario &#x25BC;
-				</button>
-				<div class="dropdown-container">
-					<!-- links para cadastrar -->
-                    <a th:href="@{/usuario/form}">Cadastrar</a> 
-					
-					<!-- links para listar -->
-                    <a	th:href="@{/usuario/list}">Listar</a>
-				</div>
-		 </div>
+   
+   <header th:fragment="navbar" class="navbar-header">
+      <div class="navbar-container">
+        
+        <a th:href="@{/}" class="navbar-brand">IFPB - Achados e Perdidos</a>
+        
+        <nav class="navbar-menu">
+          <a th:href="@{/}">🏠 Tela Inicial</a>
+          <a th:href="@{/usuario/form}">👤 Cadastrar Usuário</a>
+          <a th:href="@{/usuario/list}">📋 Listar Usuários</a>
+          <a th:href="@{/item/form}">🎒 Cadastrar Item</a>
+        </nav>
+        
+      </div>
+    </header>
 
-		 
-		 <div th:insert="fragments/mensagem :: message"></div>
-
-   </div>
 </body>
 </html>

@@ -1,35 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Achados e Perdidos</title>
     <link rel="stylesheet" th:href="@{/css/menu.css}">
- 
 </head>
 <body>
-    		<!--barra de navegação-->
-		<div th:insert="fragments/barraNavegacao :: navbar"></div>
+    
+    <div th:insert="fragments/barraNavegacao :: navbar"></div>
 
-    <main>
-        <h1>Itens Achados e Perdidos</h1>
-        <br>
-        <a href="/item/form">cadastrar item</a>
+    <main class="container">
+    
+        <div th:insert="fragments/mensagem :: message"></div>
 
-
+        <h2 class="main-title">Achados e Perdidos – IFPB</h2>
+        
         <div class="grid-container">
+            
             <div th:each="item : ${itens}" class="card">
+                
                     <img class="card-image" th:src="@{${item.fotoDoItem}}" alt="Foto do Item" />
+                    
                     <div class="category" th:text="${item.categoria}">Categoria</div>
+                    
                     <div class="heading" th:text="${item.nome}">Nome do Item</div>
+                    
                     <div class="author">
-                        <span th:text="'Local: ' + ${item.local}"></span><br>
-                        <span th:text="'Status: ' + ${item.status}"></span><br>
+                        <span th:text="'Local: ' + ${item.local}"></span>
+                        <span th:text="'Status: ' + ${item.status}"></span>
                         <span th:text="${item.descricao}"></span>
                     </div>
-                    <a th:href="@{'/item/edit/' + ${item.id}}">Editar</a>
+                    
+                    <a th:href="@{'/item/edit/' + ${item.id}}" class="card-button">Editar</a>
             </div>
+            
         </div>
     </main>
+
+    <footer class="main-footer">
+      <p>Desenvolvido para o IFPB – Sistema de Achados e Perdidos</p>
+    </footer>
+
 </body>
 </html>
