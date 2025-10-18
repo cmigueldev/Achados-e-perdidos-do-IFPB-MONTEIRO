@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div th:fragment="formItem" class="form">
+
+        <label for="idItem">usuario:</label>
+        <select id="idItem" th:field="*{usuario}">
+           <option value="">--</option>
+           <option th:each="u : ${usuarios}"
+                   th:value="${u.id}"
+                   th:text="${u.nome}">
+           </option>
+        </select>
+
+        <br>
+
+        <div th:if="${item.codigo == null}">
+            <label for="idFoto">Foto do Item:</label>
+            <input type="file" id="idFoto" name="image" accept="image/*" />
+            <br>
+        </div>
+
+            <label for="idNome">Nome:</label>
+            <input type="text" id="idNome" th:field="*{nome}" placeholder="Informe o nome do curso" required/>
+            <br>
+
+            <label for="idCategoria">Categoria:</label>
+            <input type="text" id="idCategoria" th:field="*{categoria}" placeholder="Informe a categoria do curso" required/>
+            <br>
+
+            <label for="idLocal">Local:</label>
+            <input type="text" id="idLocal" th:field="*{local}" placeholder="Informe o local do curso" required/>
+            <br>
+
+        <div th:if="${item.codigo == null}">
+            <label for="idDataEncontrado">Data Encontrado:</label>
+            <input type="date" id="idDataEncontrado" th:field="*{dataEncontrado}" placeholder="Informe a data encontrado" required/>
+            <br>
+        </div>
+
+            <label for="idDescricao">Descrição:</label>
+            <input type="text" id="idDescricao" th:field="*{descricao}" placeholder="Informe a descrição do curso" required/>
+            <br>
+
+            <label for="idStatus">Status</label>
+			<select id="" th:field="*{status}">
+                <option value="PERDIDO">PERDIDO</option>
+                <option value="ENCONTRADO">ENCONTRADO</option>
+            </select>
+       
+    </div>
+</body>
+</html> 

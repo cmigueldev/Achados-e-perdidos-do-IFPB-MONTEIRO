@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Item</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+</head>
+<body>
+    <div th:insert="fragments/barraNavegacao :: navbar"></div>
+    <br>
+    <div class="form-header">
+        <h1>Editar Item</h1>
+    </div>
+    <br>
+    <form th:action="@{/item/edit}" th:object="${item}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}" />
+        <div th:insert="fragments/formItem :: formItem"></div>
+        <div class="button-container">
+            <button type="submit">Salvar</button>
+            <button type="button" onclick="window.location.href='/'">Cancelar</button>
+            <a th:href="@{'/item/delete/' + ${item.id}}" onclick="return confirm('Tem certeza que deseja deletar este item?')">Excluir</a>
+        </div>
+    </form>
+</body>
+</html>
