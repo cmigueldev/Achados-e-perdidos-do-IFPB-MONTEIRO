@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Fragments</title>
+   <link rel="stylesheet" th:href="@{/css/menu.css}">
+   
+</head>
+<body>
+   <div th:fragment="navbar" class="menu">
+		<div class="sidenav">
+				<a href="/">tela inicial</a>
+				
+				<button class="dropdown-btn">
+                    Usuario &#x25BC;
+				</button>
+				<div class="dropdown-container">
+					<!-- links para cadastrar -->
+                    <a th:href="@{/usuario/form}">Cadastrar</a> 
+					
+					<!-- links para listar -->
+                    <a	th:href="@{/usuario/list}">Listar</a>
+				</div>
+		 </div>
+
+		 
+		 <div th:insert="fragments/mensagem :: message"></div>
+
+   </div>
+</body>
+</html>
