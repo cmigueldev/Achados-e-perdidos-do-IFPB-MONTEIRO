@@ -1,5 +1,6 @@
 package br.edu.ifpb.sistema_achados_e_perdidos.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import br.edu.ifpb.sistema_achados_e_perdidos.entity.Item;
 import br.edu.ifpb.sistema_achados_e_perdidos.entity.Usuario;
 import br.edu.ifpb.sistema_achados_e_perdidos.service.UsuarioService;
 
@@ -34,12 +35,12 @@ public class UsuarioController {
             usuarioService.save(usuario);
         }
         model.addAttribute("mensagemSucesso", "Usuário com matrícula " + usuario.getMatricula() + " cadastrado com sucesso!");
-        return "cadastrarUsuario";
+        return listUsuarios(model);
     }
-
+    
     @GetMapping("/edit/{id}")
     public String editUsuario(@PathVariable Long id, Model model) {
-        Usuario usuario = usuarioService.findById(id);
+        Usuario usuario = usuarioService.findByIdWithItens(id);
         model.addAttribute("usuario", usuario);
         return "editarUsuario";
     }
@@ -49,7 +50,7 @@ public class UsuarioController {
         if ((!usuarioService.findById(usuario.getId()).getMatricula().equals(usuario.getMatricula()))
                 && usuarioService.existsByMatricula(usuario.getMatricula())) {
             model.addAttribute("mensagemErro", "Usuário com matrícula " + usuario.getMatricula() + " já existe.");
-            return listUsuarios(model);
+            return "editarUsuario";
         } else {
             usuarioService.save(usuario);
         }
@@ -60,13 +61,23 @@ public class UsuarioController {
     @GetMapping("/list")
     public String listUsuarios(Model model) {
         model.addAttribute("usuarios", usuarioService.findAll());
-        return "listarUsuario";
+        return "listarUsuarios";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteUsuario(@PathVariable Long id, Model model) {
-        usuarioService.deleteById(id);
-        model.addAttribute("mensagemSucesso", "Usuário deletado com sucesso!");
-        return listUsuarios(model);
+        List<Item> itens = usuarioService.findByIdWithItens(id).getItens();
+		if(itens != null && !itens.isEmpty()) {
+			model.addAttribute("mensagemErro", "Não é possível remover o usuário, pois existem itens associados a ele.");
+			model.addAttribute("itens", itens);
+			return listUsuarios(model);
+		}
+		else {
+			usuarioService.deleteById(id);
+			model.addAttribute("mensagemSucesso", "Usuário removido com sucesso");
+            model.addAttribute("itens", itens);
+			return listUsuarios(model);
+			
+		}
     }
 }

@@ -1,8 +1,12 @@
 package br.edu.ifpb.sistema_achados_e_perdidos.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -26,14 +30,14 @@ public class Usuario {
 	@Column(unique = true, nullable = false)
     private String matricula;
 
-    @NotBlank(message = "A senha do usuario é obrigatória")
-    @Column(nullable = false)
-    private String senha;
-
     @NotBlank(message = "O telefone do usuario é obrigatório")
     @Column(nullable = false,unique = true)
     private String telefone;
-
+ 
+    @OneToMany(
+			fetch = FetchType.LAZY,
+			mappedBy = "usuario")
+	private List<Item> itens;
 
     public Long getId() {
         return id;
@@ -59,12 +63,6 @@ public class Usuario {
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
     public String getTelefone() {
         return telefone;
     }
@@ -72,8 +70,11 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-
-
+    public List<Item> getItens() {
+        return itens;
+    }
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
 }
-
 

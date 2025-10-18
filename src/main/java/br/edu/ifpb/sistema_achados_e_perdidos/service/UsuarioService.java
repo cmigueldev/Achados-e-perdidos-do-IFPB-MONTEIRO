@@ -54,5 +54,9 @@ public class UsuarioService {
 		return usuarioRepository.existsByMatricula(matricula);
     }
 
+	// retorna um usuario com seus itens associados
+	public Usuario findByIdWithItens(Long id) {
+		return usuarioRepository.findByIdWithItens(id);
+	}
 	
 }
