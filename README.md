@@ -1,18 +1,18 @@
 # SISTEMA DE ACHADOS E PERDIDOS IFPB MONTEIRO
 
-## 💻 Solução Web para Gerenciamento de Achados e Perdidos (IFPB Campus Monteiro)
+##  Solução Web para Gerenciamento de Achados e Perdidos (IFPB Campus Monteiro)
 
 Este projeto é um Sistema Web desenvolvido como Trabalho de Conclusão de Curso (TCC) para informatizar e otimizar o processo de gestão de itens perdidos e achados no Instituto Federal da Paraíba (IFPB), Campus Monteiro.
 
 O objetivo principal é facilitar a comunicação e o registro dos itens, permitindo que a comunidade acadêmica e a administração possam encontrar ou devolver objetos de forma eficiente e transparente.
 
-### 🔗 Repositório
+###  Repositório
 
 * **Link:** https://github.com/cmigueldev/Achados-e-perdidos-do-IFPB-MONTEIRO.git
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 A aplicação foi desenvolvida com foco em uma arquitetura robusta e moderna, utilizando as seguintes tecnologias:
 
@@ -28,7 +28,7 @@ A aplicação foi desenvolvida com foco em uma arquitetura robusta e moderna, ut
 
 ---
 
-## ⚙️ Configuração e Execução
+##  Configuração e Execução
 
 Para executar o projeto localmente, siga os passos abaixo:
 
@@ -73,7 +73,7 @@ Certifique-se de ter instalado em sua máquina:
 
 ---
 
-## 🚧 Status e Contribuições
+##  Status e Contribuições
 
 Este projeto está concluído em sua versão TCC (MVP – Produto Mínimo Viável).
 
